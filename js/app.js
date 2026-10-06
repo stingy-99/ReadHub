@@ -75,13 +75,21 @@ function getCurrentUser() {
 
 function requireAuth(role = null) {
   const user = getCurrentUser();
+  const currentPath = window.location.pathname;
+  const inAdminFolder = currentPath.includes("/admin/");
+
   if (!user) {
-    window.location.href = role === "admin" ? "../login.html" : "login.html";
+    window.location.href = role === "admin" ? "/admin/login.html" : "/login.html";
     return null;
   }
 
   if (role && user.role !== role) {
-    window.location.href = user.role === "admin" ? "admin/dashboard.html" : "dashboard.html";
+    window.location.href = user.role === "admin" ? "/admin/dashboard.html" : "/dashboard.html";
+    return null;
+  }
+
+  if (!role && inAdminFolder && user.role !== "admin") {
+    window.location.href = "/dashboard.html";
     return null;
   }
 
@@ -851,8 +859,7 @@ window.addEventListener("DOMContentLoaded", () => {
   logoutButtons.forEach((button) => {
     button.addEventListener("click", () => {
       clearSession();
-      const logoutUrl = window.location.pathname.includes("/admin/") ? "../index.html" : "index.html";
-      window.location.href = logoutUrl;
+      window.location.href = "/index.html";
     });
   });
 

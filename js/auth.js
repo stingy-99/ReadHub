@@ -2,8 +2,116 @@ document.addEventListener("DOMContentLoaded", () => {
   ensureState();
 
   const sessionUser = getCurrentUser();
-  if (sessionUser && (window.location.pathname.endsWith("login.html") || window.location.pathname.endsWith("register.html"))) {
-    window.location.href = sessionUser.role === "admin" ? "admin/dashboard.html" : "dashboard.html";
+  const isAdminFolder = window.location.pathname.includes("/admin/");
+  const isAdminLoginPage = isAdminFolder && window.location.pathname.endsWith("login.html");
+  const isStudentLoginPage = window.location.pathname.endsWith("login.html") && !isAdminLoginPage;
+
+  if (sessionUser && (isAdminLoginPage || isStudentLoginPage || window.location.pathname.endsWith("register.html"))) {
+    if (isAdminFolder && sessionUser.role !== "admin") {
+      window.location.href = "/dashboard.html";
+    } else if (sessionUser.role === "admin") {
+      window.location.href = "/admin/dashboard.html";
+    } else {
+      window.location.href = "/dashboard.html";
+    }
+  }
+
+  const adminLoginForm = document.getElementById("admin-login-form");
+  if (adminLoginForm) {
+    adminLoginForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const email = document.getElementById("admin-email").value.trim();
+      const password = document.getElementById("admin-password").value;
+
+      if (!email || !password) {
+        showToast("Please enter both email and password.", "error");
+        return;
+      }
+
+      const state = getState();
+      const user = state.users.find((item) => item.email === email && item.role === "admin");
+      if (!user) {
+        showToast("Admin account not found.", "error");
+        return;
+      }
+
+      if (hashPasswordSync(password) !== user.passwordHash) {
+        showToast("Incorrect admin password.", "error");
+        return;
+      }
+
+      setSession(user.id);
+      showToast("Admin login successful.", "success");
+      setTimeout(() => {
+        window.location.href = "/admin/dashboard.html";
+      }, 500);
+    });
+  }
+
+  const adminRegisterForm = document.getElementById("admin-register-form");
+  if (adminRegisterForm) {
+    adminRegisterForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const formData = new FormData(adminRegisterForm);
+      const fullName = String(formData.get("fullName") || "").trim();
+      const staffId = String(formData.get("staffId") || "").trim();
+      const email = String(formData.get("email") || "").trim().toLowerCase();
+      const department = String(formData.get("department") || "").trim();
+      const phone = String(formData.get("phone") || "").trim();
+      const password = String(formData.get("password") || "");
+      const confirmPassword = String(formData.get("confirmPassword") || "");
+
+      if (!fullName || !staffId || !email || !department || !phone || !password || !confirmPassword) {
+        showToast("Please complete all fields.", "error");
+        return;
+      }
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        showToast("Enter a valid work email address.", "error");
+        return;
+      }
+      if (password.length < 8) {
+        showToast("Password must be at least 8 characters long.", "error");
+        return;
+      }
+      if (password !== confirmPassword) {
+        showToast("Passwords do not match.", "error");
+        return;
+      }
+
+      const state = getState();
+      const duplicate = state.users.some((item) =>
+        String(item.email).toLowerCase() === email || String(item.studentId).toLowerCase() === staffId.toLowerCase()
+      );
+      if (duplicate) {
+        showToast("An account with this email or staff ID already exists.", "error");
+        return;
+      }
+
+      const adminUser = {
+        id: crypto.randomUUID ? crypto.randomUUID() : `admin-${Date.now()}`,
+        fullName,
+        studentId: staffId,
+        email,
+        passwordHash: hashPasswordSync(password),
+        department,
+        level: "Admin",
+        phone,
+        role: "admin",
+        status: "active",
+        createdAt: new Date().toISOString(),
+      };
+
+      state.users.unshift(adminUser);
+      saveState(state);
+      addActivityLog(adminUser.id, "Admin account created", `Created admin account for ${fullName}.`);
+      adminRegisterForm.reset();
+      showToast("Admin account created. You can now log in.", "success");
+      setTimeout(() => {
+        window.location.href = "/admin/login.html";
+      }, 600);
+    });
   }
 
   const loginForm = document.getElementById("login-form");
@@ -38,7 +146,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setSession(user.id);
       showToast("Login successful.", "success");
       setTimeout(() => {
-        window.location.href = user.role === "admin" ? "admin/dashboard.html" : "dashboard.html";
+        window.location.href = user.role === "admin" ? "/admin/dashboard.html" : "/dashboard.html";
       }, 500);
     });
   }
