@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body class="auth-page-body">
+    <div class="auth-shell register-shell">
+      <div class="auth-panel auth-form-panel">
+        <div class="auth-header">
+          <a href="index.html" class="brand auth-brand">
+            <span class="brand-mark">E</span>
+            <span>E-Library</span>
+          </a>
+          <h2>Create account</h2>
+        </div>
+
+        <form id="register-form" class="auth-form" novalidate>
+          <div class="field-grid">
+            <div class="field-group">
+              <label for="reg-name">Full name</label>
+              <input id="reg-name" name="fullName" type="text" placeholder="John Doe" required />
+            </div>
+            <div class="field-group">
+              <label for="reg-student">Student ID</label>
+              <input id="reg-student" name="studentId" type="text" placeholder="STU-2024-001" required />
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field-group">
+              <label for="reg-email">Email</label>
+              <input id="reg-email" name="email" type="email" placeholder="student@university.edu" required />
+            </div>
+            <div class="field-group">
+              <label for="reg-phone">Phone number</label>
+              <input id="reg-phone" name="phone" type="tel" placeholder="08012345678" required />
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field-group">
+              <label for="reg-department">Department</label>
+              <input id="reg-department" name="department" type="text" placeholder="Computer Science" required />
+            </div>
+            <div class="field-group">
+              <label for="reg-level">Level</label>
+              <select id="reg-level" name="level" required>
+                <option value="">Select level</option>
+                <option>100</option>
+                <option>200</option>
+                <option>300</option>
+                <option>400</option>
+                <option>500</option>
+                <option>Graduate</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-grid">
+            <div class="field-group password-wrap">
+              <label for="reg-password">Password</label>
+              <input id="reg-password" name="password" type="password" placeholder="Create password" required />
+              <button type="button" class="toggle-password" aria-label="Show password">Show</button>
+            </div>
+            <div class="field-group password-wrap">
+              <label for="reg-confirm">Confirm password</label>
+              <input id="reg-confirm" name="confirmPassword" type="password" placeholder="Repeat password" required />
+              <button type="button" class="toggle-password" aria-label="Show confirm password">Show</button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+
+        <p class="auth-footer">
+          Already a member?
+          <a href="login.html" class="text-link">Login</a>
+        </p>
+      </div>
+
+      <div class="auth-panel auth-illustration alt-illustration">
+        <div class="auth-badge">New student account</div>
+        <h1>Open the door to a better study experience.</h1>
+        <p>Manage your books, borrowing history and visit records from a single portal.</p>
+        <div class="mini-quote">
+          <strong>Get started today.</strong>
+          <span>Join the digital campus library.</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

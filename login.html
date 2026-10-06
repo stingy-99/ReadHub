@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login | E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body class="auth-page-body">
+    <div class="auth-shell">
+      <div class="auth-panel auth-illustration">
+        <div class="auth-badge">Student portal</div>
+        <h1>Welcome back to your library.</h1>
+        <p>Access your dashboard, borrow books and track your reading progress.</p>
+        <div class="mini-quote">
+          <strong>Built for smarter learning.</strong>
+          <span>University reading, simplified.</span>
+        </div>
+      </div>
+
+      <div class="auth-panel auth-form-panel">
+        <div class="auth-header">
+          <a href="index.html" class="brand auth-brand">
+            <span class="brand-mark">E</span>
+            <span>E-Library</span>
+          </a>
+          <h2>Login</h2>
+        </div>
+
+        <form id="login-form" class="auth-form" novalidate>
+          <div class="field-group">
+            <label for="login-email">Email or Student ID</label>
+            <input id="login-email" name="identifier" type="text" placeholder="Enter email or student ID" required />
+          </div>
+
+          <div class="field-group password-wrap">
+            <label for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" placeholder="Enter password" required />
+            <button type="button" class="toggle-password" aria-label="Show password">Show</button>
+          </div>
+
+          <div class="form-row between">
+            <label class="checkbox-wrap">
+              <input type="checkbox" name="remember" />
+              <span>Remember me</span>
+            </label>
+            <a href="#" class="text-link">Forgot password?</a>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+
+        <p class="auth-footer">
+          Don’t have an account?
+          <a href="register.html" class="text-link">Create one</a>
+        </p>
+      </div>
+    </div>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/app.js"></script>
+    <script src="js/auth.js"></script>
+  </body>
+</html>

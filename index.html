@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Library | University Library System</title>
+    <meta
+      name="description"
+      content="Modern university e-library system for borrowing, library tracking and student resources."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">E</span>
+          <span>E-Library</span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html" class="active">Home</a>
+          <a href="books.html">Browse Books</a>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <a href="login.html" class="btn btn-ghost">Login</a>
+          <a href="register.html" class="btn btn-primary">Register</a>
+          <button class="menu-toggle" aria-label="Toggle menu">☰</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Your Digital Library</span>
+            <h1>Your Digital Library, Anytime.</h1>
+            <p>
+              Discover, borrow and manage your university library resources from one
+              convenient platform.
+            </p>
+            <div class="hero-actions">
+              <a href="books.html" class="btn btn-primary">Browse Books</a>
+              <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+            <ul class="hero-points">
+              <li>20,000+ Titles</li>
+              <li>Fast borrowing</li>
+              <li>Track your reading</li>
+            </ul>
+          </div>
+          <div class="hero-visual" aria-label="Library shelves illustration">
+            <div class="hero-card card-main">
+              <span class="mini-tag">Books available</span>
+              <div class="book-stack">
+                <div class="book one"></div>
+                <div class="book two"></div>
+                <div class="book three"></div>
+              </div>
+              <div class="stat-box">
+                <strong>8,540</strong>
+                <span>Borrowed this semester</span>
+              </div>
+            </div>
+            <div class="hero-card card-floating">
+              <span>Library Access</span>
+              <strong>24/7</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section" id="features">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Features</span>
+            <h2>Everything students need in one place</h2>
+          </div>
+          <div class="feature-grid">
+            <article class="feature-card">
+              <div class="icon-box">🔎</div>
+              <h3>Search thousands of books</h3>
+              <p>Find titles by author, category, ISBN and publication year with ease.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">📚</div>
+              <h3>Easy borrowing</h3>
+              <p>Borrow books in seconds and keep track of your due dates and returns.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">📊</div>
+              <h3>Digital borrowing history</h3>
+              <p>Review loan activity, overdue items and reading trends.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">✅</div>
+              <h3>Real-time availability</h3>
+              <p>See book availability instantly and reduce frustration during busy periods.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">🧭</div>
+              <h3>Library entry tracking</h3>
+              <p>Track visits, managing access records and current visitor counts.</p>
+            </article>
+            <article class="feature-card">
+              <div class="icon-box">👤</div>
+              <h3>Personalized dashboard</h3>
+              <p>Monitor your borrowing, reading activity and library visit history.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section featured-books" id="books">
+        <div class="container">
+          <div class="section-heading inline-heading">
+            <div>
+              <span class="eyebrow">Featured Books</span>
+              <h2>Popular reads for students</h2>
+            </div>
+            <a href="books.html" class="text-link">Browse all</a>
+          </div>
+          <div class="book-grid" id="featured-books-grid"></div>
+        </div>
+      </section>
+
+      <section class="section stats-section">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-item">
+              <strong>24,000+</strong>
+              <span>Total Books</span>
+            </div>
+            <div class="stat-item">
+              <strong>9,200+</strong>
+              <span>Registered Students</span>
+            </div>
+            <div class="stat-item">
+              <strong>4,380</strong>
+              <span>Books Borrowed</span>
+            </div>
+            <div class="stat-item">
+              <strong>18,600</strong>
+              <span>Library Visits</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section about" id="about">
+        <div class="container split-layout">
+          <div>
+            <span class="eyebrow">About the library</span>
+            <h2>Built for a smarter academic experience</h2>
+            <p>
+              E-Library helps students and staff manage reading resources, borrowing
+              records, visits and university library activity in one reliable digital system.
+            </p>
+            <p>
+              From the student dashboard to the admin control panel, every feature is designed
+              to make library services faster, clearer and easier to use.
+            </p>
+          </div>
+          <div class="info-panel">
+            <div class="info-row">
+              <span>Open Hours</span>
+              <strong>7:00 AM - 10:00 PM</strong>
+            </div>
+            <div class="info-row">
+              <span>Borrowing Limit</span>
+              <strong>5 active books</strong>
+            </div>
+            <div class="info-row">
+              <span>Access</span>
+              <strong>Campus-wide</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <div class="container footer-grid">
+        <div>
+          <a href="index.html" class="brand footer-brand">
+            <span class="brand-mark">E</span>
+            <span>E-Library</span>
+          </a>
+          <p>Your digital university library for discovery, borrowing and learning.</p>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="books.html">Browse Books</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="register.html">Register</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <ul>
+            <li>library@elibrary.edu</li>
+            <li>+234 (0) 800 000 1234</li>
+            <li>University Library Center</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Follow</h4>
+          <div class="socials">
+            <a href="#" aria-label="Facebook">f</a>
+            <a href="#" aria-label="X">x</a>
+            <a href="#" aria-label="Instagram">◎</a>
+          </div>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2026 E-Library. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="js/app.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        ensureState();
+        renderFeaturedBooks();
+        setActiveNav('index');
+        initMobileMenu();
+      });
+    </script>
+  </body>
+</html>

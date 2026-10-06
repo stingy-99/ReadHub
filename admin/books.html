@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Management | E-Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+    <link rel="stylesheet" href="../css/responsive.css" />
+  </head>
+  <body class="app-body">
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <div class="brand">
+            <span class="brand-mark">E</span>
+            <span>E-Library</span>
+          </div>
+        </div>
+
+        <nav class="side-nav">
+          <a href="dashboard.html">Admin Dashboard</a>
+          <a href="books.html" class="active">Book Management</a>
+          <a href="users.html">Users</a>
+          <a href="borrowings.html">Borrowings</a>
+          <a href="logbook.html">Library Visits</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button type="button" class="btn btn-secondary btn-block" data-logout>Logout</button>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Catalog</p>
+            <h1>Book management</h1>
+          </div>
+          <div class="topbar-right">
+            <div class="user-pill" id="user-pill"></div>
+          </div>
+        </header>
+
+        <section class="panel-card form-card">
+          <div class="panel-head">
+            <h2>Add new book</h2>
+          </div>
+          <form id="admin-book-form" class="auth-form">
+            <div class="field-grid">
+              <div class="field-group"><label>Title<input name="title" required /></label></div>
+              <div class="field-group"><label>Author<input name="author" required /></label></div>
+            </div>
+            <div class="field-grid">
+              <div class="field-group"><label>ISBN<input name="isbn" required /></label></div>
+              <div class="field-group"><label>Category<input name="category" required /></label></div>
+            </div>
+            <div class="field-grid">
+              <div class="field-group"><label>Publisher<input name="publisher" required /></label></div>
+              <div class="field-group"><label>Publication Year<input name="publicationYear" type="number" required /></label></div>
+            </div>
+            <div class="field-grid">
+              <div class="field-group"><label>Total Copies<input name="totalCopies" type="number" min="1" required /></label></div>
+              <div class="field-group"><label>Available Copies<input name="availableCopies" type="number" min="0" required /></label></div>
+            </div>
+            <div class="field-group"><label>Description<textarea name="description" rows="4" required></textarea></label></div>
+            <button type="submit" class="btn btn-primary">Add Book</button>
+          </form>
+        </section>
+
+        <section class="panel-card table-card">
+          <div class="panel-head">
+            <h2>Current catalog</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Category</th>
+                  <th>Copies</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="admin-books-table"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="toast-container" aria-live="polite" aria-atomic="true"></div>
+    <script src="../js/app.js"></script>
+    <script src="../js/admin.js"></script>
+  </body>
+</html>
