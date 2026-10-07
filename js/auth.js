@@ -6,14 +6,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const isAdminLoginPage = isAdminFolder && window.location.pathname.endsWith("login.html");
   const isStudentLoginPage = window.location.pathname.endsWith("login.html") && !isAdminLoginPage;
 
-  if (sessionUser && (isAdminLoginPage || isStudentLoginPage || window.location.pathname.endsWith("register.html"))) {
-    if (isAdminFolder && sessionUser.role !== "admin") {
-      window.location.href = "/dashboard.html";
-    } else if (sessionUser.role === "admin") {
+  if (sessionUser && isAdminLoginPage) {
+    if (sessionUser.role === "admin") {
       window.location.href = "/admin/dashboard.html";
     } else {
-      window.location.href = "/dashboard.html";
+      clearSession();
     }
+  } else if (sessionUser && (isStudentLoginPage || window.location.pathname.endsWith("register.html"))) {
+    window.location.href = sessionUser.role === "admin" ? "/admin/dashboard.html" : "/dashboard.html";
   }
 
   const adminLoginForm = document.getElementById("admin-login-form");
